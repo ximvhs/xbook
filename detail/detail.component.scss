@@ -1,0 +1,136 @@
+.BenhAn {
+  width: 630px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-container {
+      display: flex;
+      gap: 4px;
+      &-title {
+        color: #0d83dd;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+  .ChuanDoan {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #cacece;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    p {
+      color: #0d83dd;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    span {
+      font-size: 14px;
+      font-weight: 300;
+      padding-left: 20px;
+      line-height: 28px;
+    }
+  }
+
+  .XetNghiem {
+    border: solid 1px #cacece;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    &-title {
+      display: flex;
+      justify-content: space-between;
+      p {
+        color: #0d83dd;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 28px;
+      }
+    }
+    &-des {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 300;
+      padding-left: 20px;
+    }
+    &-img {
+      &-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        margin-bottom: 20px;
+        img {
+          max-height: 400px;
+          max-width: 400px;
+          object-fit: cover;
+          border-radius: 12px;
+        }
+        span {
+          color: #4b526a;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .Thuoc {
+    border: solid 1px #cacece;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    &-title {
+      display: flex;
+      justify-content: space-between;
+      p {
+        color: #0d83dd;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 28px;
+      }
+    }
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-des {
+      font-size: 14px;
+      font-weight: 300;
+      padding-left: 20px;
+      &-name {
+        max-width: 500px;
+        font-weight: 400;
+        line-height: 28px;
+        font-size: 14px;
+        padding-left: 20px;
+      }
+      &-use {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .XetNghiem-img-container img {
+    max-width: 200px !important;
+    max-height: 200px !important;
+  }
+  .Thuoc {
+    flex-direction: column !important;
+    gap: 10px;
+    &-des {
+      padding: 0 !important;
+    }
+  }
+}

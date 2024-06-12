@@ -1,0 +1,207 @@
+<xb-input-phonenumber></xb-input-phonenumber>
+<!-- start infomation -->
+<div class="infomation">
+  <!--  start header -->
+  <div
+    class="header container bar-content"
+    [class.expanded]="isOpenInfo"
+    (click)="toggle()"
+  >
+    <span class="header-info">Thông tin cá nhân</span>
+    <div class="header-icon">
+      <span *ngIf="!isOpenInfo" class="icon">
+        <svg
+          width="24"
+          height="14"
+          viewBox="0 0 24 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 2L12 12L22 2"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+      <span *ngIf="isOpenInfo" class="icon">
+        <svg
+          width="24"
+          height="14"
+          viewBox="0 0 24 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22 12L12 2L2 12"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </div>
+  </div>
+  <!--  end header -->
+
+  <!-- start container -->
+  <div class="container info-container" *ngIf="isOpenInfo">
+    <div class="row">
+      <div class="col-6">
+        <div class="numberBN">
+          <p>Mã bệnh nhân:</p>
+          <input type="text" [value]="clientList[0].maBenhNhan" disabled />
+        </div>
+        <div class="numberBN">
+          <p>Họ và tên:</p>
+          <input type="text" [value]="clientList[0].clientName" disabled />
+        </div>
+        <div class="numberBN">
+          <p>Ngày sinh:</p>
+          <input type="text" [value]="clientList[0].namSinh" disabled />
+        </div>
+        <div class="numberBN">
+          <p>Số điện thoại:</p>
+          <input type="text" [value]="clientList[0].dienThoai" disabled />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="sex">
+          <p class="sex-title">Giới tính:</p>
+          <div class="sex-check">
+            <div class="checkradio">
+              <div class="checkradio-1">
+                <div
+                  class="checkradio-2"
+                  [class.active]="clientList[0].gioiTinh === 'Nam'"
+                ></div>
+              </div>
+              <p class="checkradio-name">Nam</p>
+            </div>
+            <div class="checkradio">
+              <div class="checkradio-1">
+                <div
+                  class="checkradio-2"
+                  [class.active]="clientList[0].gioiTinh === 'Nữ'"
+                ></div>
+              </div>
+              <p class="checkradio-name">Nữ</p>
+            </div>
+          </div>
+        </div>
+        <div class="input-index">
+          <div class="input-index-name">
+            <p>Chiều cao:</p>
+            <input
+              type="text"
+              [value]="clientList[0].chieuCao + 'cm'"
+              disabled
+            />
+          </div>
+          <div class="input-index-name">
+            <p>Cân nặng:</p>
+            <input
+              type="text"
+              [value]="clientList[0].canNang + 'kg'"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="numberBN">
+          <p>Email:</p>
+          <input type="text" [value]="clientList[0].email" disabled />
+        </div>
+        <div class="numberBN">
+          <p>Địa chỉ:</p>
+          <input type="text" [value]="clientList[0].address" disabled />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end container -->
+</div>
+<!-- end infomation -->
+
+<!-- Start Bệnh án -->
+<div class="BenhAn">
+  <!-- start header -->
+  <div class="header container" [class.expanded]="isOpenBA" (click)="click()">
+    <span class="header-info">Bệnh án</span>
+    <div class="header-icon">
+      <span *ngIf="!isOpenBA" class="icon">
+        <svg
+          width="24"
+          height="14"
+          viewBox="0 0 24 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 2L12 12L22 2"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+      <span *ngIf="isOpenBA" class="icon">
+        <svg
+          width="24"
+          height="14"
+          viewBox="0 0 24 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22 12L12 2L2 12"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </div>
+  </div>
+  <!-- end header -->
+
+  <!-- start container -->
+  <div class="container container-content" *ngIf="isOpenBA">
+    <!-- item -->
+    <ng-container *ngFor="let item of benhSu.benhAns">
+      <div class="BA_item" (click)="navigateDetail(item.benhAnId)">
+        <div class="content">
+          <div class="content-address">
+            <span>{{ item.ngay | date : "dd/MM/yyyy" }}</span>
+            <span>{{ item.soLuuTru }}</span>
+          </div>
+          <p>Chuẩn đoán: {{ item.chuanDoan }}</p>
+        </div>
+        <svg
+          width="14"
+          height="25"
+          viewBox="0 0 14 25"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 22.5274L12 12.4007L2 2.27393"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </ng-container>
+  </div>
+  <!-- end container -->
+</div>
+<!-- End Bệnh án -->
+
+<xb-synthetic></xb-synthetic>

@@ -1,0 +1,44 @@
+.input_BN {
+  position: relative;
+  width: 700px;
+  height: 60px;
+  float: right;
+  margin-bottom: 20px;
+  input {
+    width: 700px;
+    height: 50px;
+    padding: 12px 75px 12px 14px;
+    border-radius: 12px;
+    outline: none;
+    border: solid 1px #dddedf;
+    font-size: 14px;
+  }
+  &-icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 6px;
+    top: 5px;
+    height: 40px;
+    width: 69px;
+    background: #0d83dd;
+    border-radius: 12px;
+    transition: all 0.2s linear;
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+@media screen and (max-width: 816px) {
+  .input_BN {
+    width: 350px;
+    margin-top: 20px;
+
+    input {
+      width: 100%;
+    }
+  }
+}

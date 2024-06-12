@@ -1,0 +1,114 @@
+<div class="synthetic">
+  <!-- start header -->
+  <div class="header container" [class.expanded]="isOpen" (click)="toggle()">
+    <span class="header-info">Tổng hợp</span>
+    <div class="header-icon">
+      <span *ngIf="!isOpen" class="icon">
+        <svg
+          width="24"
+          height="14"
+          viewBox="0 0 24 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 2L12 12L22 2"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+      <span *ngIf="isOpen" class="icon">
+        <svg
+          width="24"
+          height="14"
+          viewBox="0 0 24 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M22 12L12 2L2 12"
+            stroke="black"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </div>
+  </div>
+  <!-- end header -->
+
+  <!-- start container -->
+  <div class="container container-content" *ngIf="isOpen">
+    <!-- start list -->
+
+    <!-- start item -->
+    <div class="item">
+      <span class="item-title">Triệu chứng</span>
+      <div class="item-content" *ngFor="let item of trieuChungTH">
+        <div class="item-content-text" *ngIf="item.tenXetNghiem !== null">
+          <span>{{ item.tenXetNghiem }} </span>
+          <span>1/05/2024</span>
+        </div>
+      </div>
+    </div>
+    <!-- end item -->
+
+    <!-- start item -->
+    <div class="item">
+      <span class="item-title">Chuẩn đoán</span>
+      <div class="item-content" *ngFor="let item of chuanDoanTH">
+        <div class="item-content-text" *ngIf="item.tenXetNghiem !== null">
+          <span>{{ item.tenXetNghiem }}</span>
+          <span>1/05/2024</span>
+        </div>
+      </div>
+    </div>
+    <!-- end item -->
+
+    <!-- start item -->
+    <div class="item">
+      <span class="item-title">Xét Nghiệm:</span>
+      <div class="item-content" *ngFor="let item of xuatNghiemTH">
+        <div class="item-content-text" *ngIf="item.tenXetNghiem !== null">
+          <span>{{ item.tenXetNghiem }}</span>
+          <span>{{ item.ketQua }}</span>
+          <span>1/05/2024</span>
+        </div>
+      </div>
+    </div>
+    <!-- end item -->
+
+    <!-- start item -->
+    <div class="item">
+      <span class="item-title">Thuốc điều trị:</span>
+      <div class="item-content" *ngFor="let item of thuocDieuTriTH">
+        <div class="item-content-text" *ngIf="item.tenXetNghiem !== null">
+          <span>{{ item.tenXetNghiem }}</span>
+          <span>{{ item.soLuong }}</span>
+          <span>1/05/2024</span>
+        </div>
+      </div>
+    </div>
+    <!-- end item -->
+
+    <!-- start item -->
+    <div class="item">
+      <span class="item-title">Cận lâm sàng:</span>
+      <div class="item-content" *ngFor="let item of canLamSangTH">
+        <div class="item-content-text" *ngIf="item.tenXetNghiem !== null">
+          <span>{{ item.tenXetNghiem }}</span>
+          <span>{{ item.ketQua }}</span>
+          <span>1/05/2024</span>
+        </div>
+      </div>
+    </div>
+    <!-- end item -->
+
+    <!-- end list -->
+  </div>
+  <!-- end container -->
+</div>

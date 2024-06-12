@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="BenhAn col-12">
+      <div class="BenhAn-header">
+        <h1>Bệnh án: {{ BenhAn[0].soLuuTru }}</h1>
+        <div *ngFor="let item of ngayTaiKham" class="BenhAn-header-container">
+          <p class="BenhAn-header-container-title">Ngày tái Khám:</p>
+          <p>{{ item.tenXetNghiem | date : "dd/MM/yyyy" }}</p>
+        </div>
+      </div>
+
+      <!-- Triệu chứng -->
+      <div class="ChuanDoan" *ngIf="trieuChungTH[0].tenXetNghiem !== null">
+        <p>Triệu chứng:</p>
+        <div class="" *ngFor="let item of trieuChungTH">
+          <span>{{ item.tenXetNghiem }}</span>
+        </div>
+      </div>
+
+      <!-- Chuẩn đoán -->
+      <div class="ChuanDoan" *ngIf="chuanDoanTH[0].tenXetNghiem !== null">
+        <p>Chuẩn đoán:</p>
+        <div class="" *ngFor="let item of chuanDoanTH">
+          <span>{{ item.tenXetNghiem }}</span>
+        </div>
+      </div>
+
+      <!--Xét nghiệm  -->
+      <div class="XetNghiem" *ngIf="xetNghiemTH[0].tenXetNghiem !== null">
+        <div class="XetNghiem-container">
+          <div class="XetNghiem-title">
+            <p>Xét nghiệm/ khám nghiệm:</p>
+            <p>Kết quả:</p>
+          </div>
+          <div class="XetNghiem-des" *ngFor="let item of xetNghiemTH">
+            <p>{{ item.tenXetNghiem }}</p>
+            <p>{{ item.ketQua }}</p>
+          </div>
+        </div>
+
+        <div class="XetNghiem-img">
+          <div class="XetNghiem-title">
+            <p>Hình ảnh</p>
+          </div>
+          <div class="XetNghiem-img-container" *ngFor="let item of xetNghiemTH">
+            <img src="{{ item.tenFile }}" alt="" />
+            <span>({{ item.tenXetNghiem }})</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="XetNghiem" *ngIf="xetNghiemTH[0].canLamSangTH !== null">
+        <div class="XetNghiem-container">
+          <div class="XetNghiem-title">
+            <p>Cận lâm sàng:</p>
+            <p>Kết quả:</p>
+          </div>
+          <div class="XetNghiem-des" *ngFor="let item of canLamSangTH">
+            <p>{{ item.tenXetNghiem }}</p>
+            <p>{{ item.ketQua }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thuốc điều trị -->
+      <div *ngIf="thuocDieuTriTH[0].tenXetNghiem !== null" class="Thuoc">
+        <div class="Thuoc-title">
+          <p>Thuốc/ điều trị:</p>
+          <p>Cách dùng:</p>
+        </div>
+        <div class="Thuoc-container" *ngFor="let item of thuocDieuTriTH">
+          <div class="Thuoc-des-name">
+            {{ item.tenXetNghiem }} ({{ item.soLuong }})
+          </div>
+          <div class="Thuoc-des-use">{{ item.ketQua }}</div>
+        </div>
+      </div>
+
+      <!-- Lời Dặn -->
+      <div class="ChuanDoan" *ngIf="loiDan[0].tenXetNghiem !== null">
+        <p>Lời dặn:</p>
+        <div class="" *ngFor="let item of loiDan">
+          <span>{{ item.tenXetNghiem }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
