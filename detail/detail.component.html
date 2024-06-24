@@ -1,12 +1,9 @@
-<div class="container">
+<div class="custom-container">
   <div class="row">
     <div class="BenhAn col-12">
       <div class="BenhAn-header">
         <h1>Bệnh án: {{ BenhAn[0].soLuuTru }}</h1>
-        <div *ngFor="let item of ngayTaiKham" class="BenhAn-header-container">
-          <p class="BenhAn-header-container-title">Ngày tái Khám:</p>
-          <p>{{ item.tenXetNghiem | date : "dd/MM/yyyy" }}</p>
-        </div>
+        <div class="close-button" (click)="navigateGeneral()">x</div>
       </div>
 
       <!-- Triệu chứng -->
@@ -42,10 +39,22 @@
           <div class="XetNghiem-title">
             <p>Hình ảnh</p>
           </div>
-          <div class="XetNghiem-img-container" *ngFor="let item of xetNghiemTH">
-            <img src="{{ item.tenFile }}" alt="" />
-            <span>({{ item.tenXetNghiem }})</span>
+          <div class="XetNghiem-img-container">
+            <ng-container *ngFor="let item of xetNghiemTH">
+              <img
+                src="{{ item.tenFile }}"
+                alt=""
+                (click)="openOverlay(item.tenFile)"
+              />
+              <span>({{ item.tenXetNghiem }})</span>
+            </ng-container>
           </div>
+          <ng-container *ngIf="selectedImage">
+            <xb-image-overlay
+              [imgSrc]="selectedImage"
+              (closeOverlay)="closeOverlay()"
+            ></xb-image-overlay>
+          </ng-container>
         </div>
       </div>
 

@@ -1,53 +1,73 @@
-.BenhAn {
-  width: 630px;
-  background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  &-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &-container {
+.custom-container {
+  p {
+    margin: 0;
+  }
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  .BenhAn {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    &-header {
       display: flex;
-      gap: 4px;
-      &-title {
+      justify-content: space-between;
+      h1 {
         color: #0d83dd;
-        font-size: 16px;
-        font-weight: 500;
+        font-size: 28px;
+        margin: 0 0 12px 0;
+      }
+      .close-button {
+        background-color: transparent;
+        border-radius: 1000px;
+        border: none;
+        color: #4b526a;
+        font-size: 26px;
+        padding: 10px;
+        cursor: pointer;
+        transition: opacity 0.2s linear;
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
   }
   .ChuanDoan {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     border: solid 1px #cacece;
     border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 10px 20px;
+    margin-bottom: 12px;
     p {
       color: #0d83dd;
-      font-size: 18px;
+      font-size: 14px;
+      line-height: 28px;
       font-weight: 500;
+      flex-shrink: 0;
+      margin: 0;
     }
     span {
       font-size: 14px;
-      font-weight: 300;
-      padding-left: 20px;
+      font-weight: 400;
       line-height: 28px;
+      margin-left: 8px;
+      display: block;
     }
   }
 
   .XetNghiem {
     border: solid 1px #cacece;
     border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 10px 20px;
+    margin-bottom: 12px;
     &-title {
       display: flex;
       justify-content: space-between;
       p {
         color: #0d83dd;
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 500;
         line-height: 28px;
       }
@@ -56,8 +76,18 @@
       display: flex;
       justify-content: space-between;
       font-size: 14px;
-      font-weight: 300;
-      padding-left: 20px;
+      line-height: 28px;
+      font-weight: 400;
+      p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 28px;
+        flex-shrink: 0;
+        width: 50%;
+        &:last-child {
+          text-align: right;
+        }
+      }
     }
     &-img {
       &-container {
@@ -71,10 +101,20 @@
           max-width: 400px;
           object-fit: cover;
           border-radius: 12px;
+          cursor: pointer;
+          transition: opacity 0.3s linear;
+          &:hover {
+            opacity: 0.8;
+          }
         }
         span {
           color: #4b526a;
-          font-size: 12px;
+          line-height: 28px;
+          font-size: 14px;
+          margin-bottom: 12px;
+        }
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }
@@ -83,8 +123,9 @@
   .Thuoc {
     border: solid 1px #cacece;
     border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 10px 20px;
+    margin-bottom: 12px;
+    gap: 0;
     display: flex;
     flex-direction: column;
     &-title {
@@ -92,7 +133,7 @@
       justify-content: space-between;
       p {
         color: #0d83dd;
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 500;
         line-height: 28px;
       }
@@ -102,20 +143,20 @@
       justify-content: space-between;
     }
     &-des {
+      line-height: 28px;
       font-size: 14px;
-      font-weight: 300;
-      padding-left: 20px;
+      font-weight: 400;
+      padding-left: 12px;
       &-name {
         max-width: 500px;
         font-weight: 400;
         line-height: 28px;
         font-size: 14px;
-        padding-left: 20px;
       }
       &-use {
         font-weight: 400;
         font-size: 14px;
-        line-height: 22px;
+        line-height: 28px;
       }
     }
   }
@@ -123,8 +164,8 @@
 
 @media screen and (max-width: 665px) {
   .XetNghiem-img-container img {
-    max-width: 200px !important;
-    max-height: 200px !important;
+    max-width: 300px !important;
+    max-height: 300px !important;
   }
   .Thuoc {
     flex-direction: column !important;

@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "@progress/kendo-angular-inputs";
 import { AvatarModule } from "ngx-avatar";
 import { XbookCoreSharedModule } from "xbook-core";
+import { ImageOverlayComponent } from "./image-overlay/image-overlay.component";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { XbookCoreSharedModule } from "xbook-core";
     InputPhonenumberComponent,
     DetailComponent,
     SyntheticComponent,
+    ImageOverlayComponent,
   ],
   imports: [
     CommonModule,
@@ -33,5 +35,7 @@ import { XbookCoreSharedModule } from "xbook-core";
     AvatarModule,
   ],
   providers: [MedicalRecordService],
+  entryComponents: [ImageOverlayComponent],
+  exports: [ImageOverlayComponent],
 })
 export class MedicModule {}

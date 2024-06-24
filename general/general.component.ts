@@ -8,7 +8,6 @@ import { MedicalRecordService } from "../medical-record.service";
 import { BENHSU, LISTPATIENT } from "../mock.service";
 import { BenhSu, listPatient } from "../model";
 import { HeroService } from "../hero.service";
-import { groupBy } from "lodash";
 
 @Component({
   selector: "xb-general",
@@ -28,10 +27,10 @@ export class GeneralComponent implements OnInit {
     private heroService: HeroService
   ) {}
 
-  ngOnInit() {}
-
   isOpenInfo = false;
   isOpenBA = false;
+
+  ngOnInit() {}
 
   toggle() {
     this.isOpenInfo = !this.isOpenInfo;

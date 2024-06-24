@@ -1,0 +1,6 @@
+<div class="overlay" (click)="close()">
+  <div class="overlay-content" (click)="$event.stopPropagation()">
+    <img [attr.src]="imgSrc" alt="Zoomed Image" />
+    <div class="close-button" (click)="close()">x</div>
+  </div>
+</div>

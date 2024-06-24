@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { MdBenhAnService } from "../../md-benh-an/md-benh-an.service";
 import { HeroService } from "../hero.service";
 import { groupBy } from "lodash";
@@ -20,7 +20,11 @@ export class DetailComponent implements OnInit {
   canLamSangTH = [];
   ngayTaiKham = [];
   loiDan = [];
+
+  selectedImage: string | null = null;
+
   constructor(
+    private router: Router,
     private Activatedroute: ActivatedRoute,
     private mdBenhAnService: MdBenhAnService,
     private heroService: HeroService
@@ -44,6 +48,17 @@ export class DetailComponent implements OnInit {
         this.BenhAn = data;
       });
     });
-    console.log(this.xetNghiemTH);
+  }
+
+  openOverlay(imgSrc: string): void {
+    this.selectedImage = imgSrc;
+  }
+
+  closeOverlay(): void {
+    this.selectedImage = null;
+  }
+
+  navigateGeneral() {
+    this.router.navigate([`/pages/medic/general`]);
   }
 }
