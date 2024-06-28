@@ -1,120 +1,213 @@
-<!-- <xb-input-phonenumber></xb-input-phonenumber> -->
-<!-- start infomation -->
-<div class="infomation">
-  <!-- start container -->
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-6 info-container">
-        <div class="container-primary">
-          <span class="header-info">Thông tin cá nhân</span>
-          <div class="container-info">
-            <div class="numberBN">
-              <p>Họ và tên:</p>
-              <p>{{ clientList[0].clientName }}</p>
+<div class="app">
+  <div class="main">
+    <!-- Start header -->
+    <div class="header">
+      <div class="header-title">BỆNH SỬ BỆNH NHÂN</div>
+      <!-- Start input -->
+      <xb-input-phonenumber (search)="search()"></xb-input-phonenumber>
+      <!-- End input -->
+    </div>
+    <!-- End header -->
+    <div class="benhanbenhnhan-container" *ngIf="isSearchComplete">
+      <!-- start Thông tin cá nhân -->
+      <div class="infomation">
+        <div class="infomation-title">THÔNG TIN CÁ NHÂN</div>
+        <div class="infomation-container">
+          <div class="infomation-container-list">
+            <div class="infomation-container-list-item">
+              <span>Họ và tên:</span>
+              <span>{{ clientList[0].clientName }}</span>
             </div>
-            <div class="numberBN-row">
-              <div class="numberBN">
-                <p>Sinh năm:</p>
-                <p>{{ clientList[0].namSinh }}</p>
-              </div>
-              <div class="numberBN">
-                <p>Giới tính:</p>
-                <p>{{ clientList[0].gioiTinh }}</p>
-              </div>
+            <div class="infomation-container-list-item">
+              <span>Giới tính:</span>
+              <span>{{ clientList[0].gioiTinh }}</span>
             </div>
-            <div class="numberBN">
-              <p>Số điện thoại:</p>
-              <p>{{ clientList[0].dienThoai }}</p>
+          </div>
+          <div class="infomation-container-list">
+            <div class="infomation-container-list-item">
+              <span>Số điện thoại:</span>
+              <span>{{ clientList[0].dienThoai }}</span>
             </div>
-            <div class="numberBN-row">
-              <div class="numberBN">
-                <p>Chiều cao:</p>
-                <p>{{ clientList[0].chieuCao + "cm" }}</p>
-              </div>
-              <div class="numberBN">
-                <p>Cân nặng:</p>
-                <p>{{ clientList[0].canNang + "kg" }}</p>
-              </div>
+            <div class="infomation-container-list-item">
+              <span>Năm sinh: </span>
+              <span>{{ clientList[0].namSinh }}</span>
             </div>
-            <div class="numberBN BN-email">
-              <p>Email:</p>
-              <p>{{ clientList[0].email }}</p>
+          </div>
+          <div class="infomation-container-list">
+            <div class="infomation-container-list-item">
+              <span>Chiều cao:</span>
+              <span>{{ clientList[0].chieuCao + "cm" }}</span>
             </div>
-            <div class="numberBN">
-              <p>Địa chỉ:</p>
-              <p>{{ clientList[0].address }}</p>
+            <div class="infomation-container-list-item">
+              <span>Cân nặng: </span>
+              <span>{{ clientList[0].canNang + "kg" }}</span>
+            </div>
+          </div>
+          <div class="infomation-container-list">
+            <div class="infomation-container-list-item">
+              <span>Email: </span>
+              <span style="width: auto">{{ clientList[0].email }}</span>
+            </div>
+            <div class="infomation-container-list-item">
+              <span style="width: 105px">Địa chỉ: </span>
+              <span style="width: auto">{{ clientList[0].address }}</span>
             </div>
           </div>
         </div>
       </div>
-      <!-- end container -->
+      <!-- end Thông tin cá nhân -->
 
-      <!-- Start Bệnh án -->
-      <div class="BenhAn col-12 col-lg-6">
-        <div class="container-primary">
-          <span class="header-info">Bệnh án</span>
-          <!-- start container -->
-          <div class="container-content">
-            <!-- item -->
-            <ng-container *ngFor="let item of benhSu.benhAns">
-              <div class="BA_item" (click)="navigateDetail(item.benhAnId)">
-                <div class="content">
-                  <div class="content-address">
-                    <span>{{ item.ngay | date : "dd/MM/yyyy" }}</span>
-                    <span>{{ item.soLuuTru }}</span>
-                  </div>
-                  <p>Chuẩn đoán: {{ item.chuanDoan }}</p>
+      <!-- start Bệnh án -->
+      <div class="benhAn">
+        <div class="benhAn-title">BỆNH ÁN</div>
+        <div class="benhAn-container">
+          <ng-container
+            class="benhAn-container-list"
+            *ngFor="let item of benhSu.benhAns"
+          >
+            <div class="benhAn-container-list-item">
+              <div
+                class="benhAn-container-list-item-pri"
+                (click)="navigateDetail(item.benhAnId)"
+              >
+                <span>{{ item.ngay | date : "dd/MM/yyyy" }}</span>
+                <span>{{ item.soLuuTru }}</span>
+                <div class="benhAn-container-list-item-pri-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1"
+                    stroke="currentColor"
+                    class="size-2"
+                    style="height: 24px"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                    />
+                  </svg>
                 </div>
-                <svg
-                  width="14"
-                  height="25"
-                  viewBox="0 0 14 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 22.5274L12 12.4007L2 2.27393"
-                    stroke="black"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
               </div>
-              <div class="BA_item" (click)="navigateDetail(item.benhAnId)">
-                <div class="content">
-                  <div class="content-address">
-                    <span>{{ item.ngay | date : "dd/MM/yyyy" }}</span>
-                    <span>{{ item.soLuuTru }}</span>
-                  </div>
-                  <p>Chuẩn đoán: {{ item.chuanDoan }}</p>
-                </div>
-                <svg
-                  width="14"
-                  height="25"
-                  viewBox="0 0 14 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 22.5274L12 12.4007L2 2.27393"
-                    stroke="black"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+              <div class="benhAn-container-list-item-sec">
+                <span>Chuẩn đoán: </span>
+                <span>{{ item.chuanDoan }}</span>
               </div>
-            </ng-container>
-          </div>
+            </div>
+          </ng-container>
         </div>
-
-        <!-- end container -->
       </div>
-      <!-- End Bệnh án -->
+      <!-- end Bệnh án -->
+
+      <!-- start tổng hợp -->
+      <div class="tonghop">
+        <div class="tonghop-title">TỔNG HỢP</div>
+        <div class="tonghop-container">
+          <!-- start img -->
+          <div class="slider-container" (dblclick)="toggleFullScreen()">
+            <div class="slider">
+              <div class="nav-btn prev" (click)="prevSlide()">&#10094;</div>
+              <img [src]="images[currentIndex]" class="slider-image" />
+              <div class="nav-btn next" (click)="nextSlide()">&#10095;</div>
+            </div>
+            <div class="caption">{{ captions[currentIndex] }}</div>
+          </div>
+
+          <div
+            class="fullscreen"
+            *ngIf="isFullScreen"
+            (click)="toggleFullScreen()"
+          >
+            <div
+              class="slider-container fullscreen-slider"
+              (click)="$event.stopPropagation()"
+            >
+              <div class="slider">
+                <div class="nav-btn prev" (click)="prevSlide()">&#10094;</div>
+                <img [src]="images[currentIndex]" class="slider-image" />
+                <div class="nav-btn next" (click)="nextSlide()">&#10095;</div>
+              </div>
+              <div class="caption-over">{{ captions[currentIndex] }}</div>
+            </div>
+            <div class="close-btn" (click)="toggleFullScreen()">&#10006;</div>
+          </div>
+          <!-- end img -->
+
+          <!--start List  -->
+          <div class="tonghop-container-list">
+            <div
+              class="tonghop-container-list-item-2"
+              *ngFor="let item of trieuChungTH"
+            >
+              <div class="tonghop-container-list-item-2-title">
+                Triệu chứng:
+              </div>
+              <div
+                class="tonghop-container-list-item-2-box"
+                *ngFor="let item of trieuChungTH"
+              >
+                <span>{{ item.tenXetNghiem }} </span>
+                <span>26/06/2024</span>
+              </div>
+            </div>
+            <div class="tonghop-container-list-item-2">
+              <div class="tonghop-container-list-item-2-title">Chuẩn đoán:</div>
+              <div
+                class="tonghop-container-list-item-2-box"
+                *ngFor="let item of chuanDoanTH"
+              >
+                <span>{{ item.tenXetNghiem }}</span>
+                <span>26/06/2024</span>
+              </div>
+            </div>
+            <div class="tonghop-container-list-item-3">
+              <div class="tonghop-container-list-item-3-title">Xét nghiệm:</div>
+              <div
+                class="tonghop-container-list-item-3-box"
+                *ngFor="let item of xetNghiemTH"
+              >
+                <span>{{ item.tenXetNghiem }}</span>
+                <span>{{ item.ketQua }}</span>
+                <span>26/06/2024</span>
+              </div>
+            </div>
+            <div class="tonghop-container-list-item-3">
+              <div class="tonghop-container-list-item-3-title">
+                Thuốc điều trị:
+              </div>
+              <div
+                class="tonghop-container-list-item-3-box"
+                *ngFor="let item of thuocDieuTriTH"
+              >
+                <span>{{ item.tenXetNghiem }}</span>
+                <span>{{ item.soLuong }}</span>
+                <span>26/06/2024</span>
+              </div>
+            </div>
+            <div class="tonghop-container-list-item-3">
+              <div class="tonghop-container-list-item-3-title">
+                Cận lâm sàn:
+              </div>
+              <div
+                class="tonghop-container-list-item-3-box"
+                *ngFor="let item of canLamSangTH"
+              >
+                <span>{{ item.tenXetNghiem }}</span>
+                <span>{{ item.ketQua }}</span>
+                <span>26/06/2024</span>
+              </div>
+            </div>
+          </div>
+          <!--end List  -->
+        </div>
+      </div>
+      <!-- end tổng hợp -->
     </div>
   </div>
 </div>
-<!-- end infomation -->
-
-<xb-synthetic></xb-synthetic>
